@@ -12,12 +12,11 @@ class Image {
 private:
     string inputFileName;
     string outputFileName;
-    vector<unsigned char> pixels;  // Use vector instead of raw pointers
-    vector<char> asciiImage;  // Use vector instead of raw pointers
+    vector<unsigned char> pixels;  
+    vector<char> asciiImage;  
     int width;
     int height;
 
-    // ASCII density characters
     static constexpr char densityChars[] = ".`^\",:;Il!i><~+_-?][}{1)(|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
     static const int densitySize = sizeof(densityChars) - 1;
 
@@ -161,8 +160,8 @@ private:
             throw runtime_error("Failed to open output file: " + outputFileName);
         }
 
-        int targetWidth = width / 2; // Correspondente à largura da arte ASCII gerada
-        int targetHeight = static_cast<int>(targetWidth / (static_cast<float>(width) / height)); // Correspondente à altura da arte ASCII gerada
+        int targetWidth = width / 2; 
+        int targetHeight = static_cast<int>(targetWidth / (static_cast<float>(width) / height)); 
         outputFile << targetWidth << " " << targetHeight << "\n";
         outputFile.write(asciiImage.data(), asciiImage.size());
 
@@ -222,10 +221,10 @@ public:
     int getHeight() { return height; }
 };
 
-// Definição dos caracteres de densidade
+
 constexpr char Image::densityChars[];
 
-// Função principal
+
 int main(int argc, char *argv[]) {
     if (argc != 4) {
         cerr << "Usage: " << argv[0] << " <mode> <input_file> <output_file>" << endl;
